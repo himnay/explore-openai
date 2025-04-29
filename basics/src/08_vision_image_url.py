@@ -1,4 +1,3 @@
-import base64
 import os
 
 from dotenv import load_dotenv
@@ -7,8 +6,10 @@ from openai.types.chat.chat_completion import ChatCompletion
 
 load_dotenv()
 
-client = OpenAI()
 LLM = os.environ.get("OPEN_AI_MODEL")
+API_KEY = os.environ.get("OPEN_AI_API_KEY")
+
+client = OpenAI(api_key=API_KEY)
 image_url = "https://drive.google.com/uc?export=view&id=1tCgKNVxDTTivWG4LOHL1DOaaRuptztBH"
 
 # Call the openai chat.completions endpoint

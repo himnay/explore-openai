@@ -6,8 +6,10 @@ from openai.types.chat.chat_completion_chunk import ChatCompletionChunk
 
 load_dotenv()
 
-client = OpenAI()
 LLM = os.environ.get("OPEN_AI_MODEL")
+API_KEY = os.environ.get("OPEN_AI_API_KEY")
+
+client = OpenAI(api_key=API_KEY)
 
 
 # Call the openai chat.completions endpoint

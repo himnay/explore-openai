@@ -1,14 +1,16 @@
+import os
+
 import requests
 from dotenv import load_dotenv
 from openai import OpenAI
-from openai.types.chat.chat_completion import ChatCompletion
-import os
 from openai.types.images_response import ImagesResponse
 
 load_dotenv()
 
-client = OpenAI()
 LLM = os.environ.get("OPEN_AI_MODEL")
+API_KEY = os.environ.get("OPEN_AI_API_KEY")
+
+client = OpenAI(api_key=API_KEY)
 
 
 # Call the openai chat.completions endpoint
@@ -28,9 +30,10 @@ def ask_openai(user_question: str, size="1024x1024") -> ImagesResponse:
 
 
 if __name__ == "__main__":
-    # Step 1 :
-    user_question = "A dog and cat sitting together"
-    size = "ImagesResponse"
+    # Step 1:
+    user_question = "A dog and cat ridding a motorcycle. cat is sitting on the side kart attached to the bycycle"  # ✅ correct prompt
+    size = "1024x1024"  # ✅ correct size value
+
     response: ImagesResponse = ask_openai(user_question, size=size)
 
     # Pretty print the entire response
@@ -42,3 +45,4 @@ if __name__ == "__main__":
         f.write(image_data)
 
     print("Image successfully downloaded and saved as 'generated_image.png'")
+

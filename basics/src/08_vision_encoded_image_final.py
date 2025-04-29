@@ -8,8 +8,10 @@ from openai import OpenAI
 
 load_dotenv()
 
-client = OpenAI()
 LLM = os.environ.get("OPEN_AI_MODEL")
+API_KEY = os.environ.get("OPEN_AI_API_KEY")
+
+client = OpenAI(api_key=API_KEY)
 api_key = os.environ.get("OPENAI_API_KEY")
 
 

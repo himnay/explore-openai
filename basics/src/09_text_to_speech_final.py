@@ -3,7 +3,7 @@ from openai import OpenAI
 from openai._legacy_response import HttpxBinaryResponseContent
 load_dotenv()
 
-client = OpenAI()
+client = OpenAI(api_key=API_KEY)
 
 def ask_openai(
     speech_text: str,
